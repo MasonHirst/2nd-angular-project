@@ -1,0 +1,29 @@
+<div class="container">
+  <app-warning-alert></app-warning-alert>
+  <app-success-alert></app-success-alert>
+  <div class="container">
+    <h4>servers works!</h4>
+  </div>
+  <hr />
+  <label>Enter username</label>
+  <input type="text" class="form-control" [(ngModel)]="username" />
+  <button
+    *ngIf="username; else noUsernameInput"
+    (click)="onClearUsername()"
+    class="btn btn-primary"
+  >
+    Destroy username
+  </button>
+
+  <ng-template #noUsernameInput>
+    <p>Please enter a username</p>
+  </ng-template>
+
+  <hr />
+  <label>Enter a server name</label>
+  <input type="text" class="form-control" [(ngModel)]="serverNameInput" />
+  <button class="btn btn-primary" (click)="onAddServer()">Add server</button>
+  <div class="container">
+    <app-server *ngFor="let server of serversList" />
+  </div>
+</div>
